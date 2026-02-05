@@ -1,0 +1,152 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Custom Fonts */
+.font-comic {
+  font-family: 'Comic Sans MS', 'Chalkboard SE', 'Comic Neue', cursive, sans-serif;
+}
+
+.font-handwriting {
+  font-family: 'Comic Sans MS', 'Chalkboard SE', 'Marker Felt', cursive, sans-serif;
+  font-weight: normal;
+  letter-spacing: 0.02em;
+}
+
+/* Custom Animations */
+@keyframes wiggle {
+  0%, 100% { transform: rotate(-5deg); }
+  50% { transform: rotate(5deg); }
+}
+
+@keyframes wiggle-reverse {
+  0%, 100% { transform: rotate(5deg); }
+  50% { transform: rotate(-5deg); }
+}
+
+@keyframes bounce-slow {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes flash {
+  0% { opacity: 0.7; }
+  100% { opacity: 0; }
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+  20%, 40%, 60%, 80% { transform: translateX(5px); }
+}
+
+.animate-wiggle {
+  animation: wiggle 1s ease-in-out infinite;
+}
+
+.animate-wiggle-reverse {
+  animation: wiggle-reverse 1s ease-in-out infinite;
+}
+
+.animate-bounce-slow {
+  animation: bounce-slow 2s ease-in-out infinite;
+}
+
+.animate-flash {
+  animation: flash 0.5s ease-out forwards;
+}
+
+.animate-shake {
+  animation: shake 0.5s ease-in-out;
+}
+
+/* Crayon-like texture for buttons */
+.crayon-texture {
+  position: relative;
+}
+
+.crayon-texture::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    45deg,
+    transparent,
+    transparent 2px,
+    rgba(255,255,255,0.1) 2px,
+    rgba(255,255,255,0.1) 4px
+  );
+  pointer-events: none;
+  border-radius: inherit;
+}
+
+/* Drawing container styling */
+.drawing-container {
+  background:
+    linear-gradient(90deg, rgba(200,200,200,0.1) 1px, transparent 1px),
+    linear-gradient(rgba(200,200,200,0.1) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+/* Paper texture */
+.paper-texture {
+  background-color: #fffef0;
+  background-image:
+    radial-gradient(circle at 100% 150%, #fffef0 24%, white 25%, white 28%, #fffef0 29%, #fffef0 36%, white 36%, white 40%, transparent 40%, transparent),
+    radial-gradient(circle at 0 150%, #fffef0 24%, white 25%, white 28%, #fffef0 29%, #fffef0 36%, white 36%, white 40%, transparent 40%, transparent),
+    radial-gradient(circle at 50% 100%, white 10%, #fffef0 11%, #fffef0 23%, white 24%, white 30%, #fffef0 31%, #fffef0 43%, white 44%, white 50%, #fffef0 51%, #fffef0 63%, white 64%, white 71%, transparent 71%, transparent),
+    radial-gradient(circle at 100% 50%, white 5%, #fffef0 6%, #fffef0 15%, white 16%, white 20%, #fffef0 21%, #fffef0 30%, white 31%, white 35%, #fffef0 36%, #fffef0 45%, white 46%, white 49%, transparent 50%, transparent),
+    radial-gradient(circle at 0 50%, white 5%, #fffef0 6%, #fffef0 15%, white 16%, white 20%, #fffef0 21%, #fffef0 30%, white 31%, white 35%, #fffef0 36%, #fffef0 45%, white 46%, white 49%, transparent 50%, transparent);
+  background-size: 100px 50px;
+}
+
+/* Mobile-first responsive tweaks */
+@media (max-width: 640px) {
+  .font-handwriting {
+    font-size: 1.1rem;
+  }
+}
+
+/* Prevent text selection on game elements */
+.game-button {
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Smooth page transitions */
+main {
+  transition: background-color 0.3s ease;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c4b5fd;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a78bfa;
+}
